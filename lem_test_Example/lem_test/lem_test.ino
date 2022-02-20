@@ -17,9 +17,9 @@ void loop() {
   float maincurVolt = maincurinput * (5.0 / 122);
   
   // print out the value you read:
-  Serial.println(char(cur1Volt) + "OCUR1");
-  Serial.println(char(cur2Volt) + "OCUR2");
-  Serial.println(char(cur3Volt) + "OCUR3");
-  Serial.println(char(maincurVolt) + "MAIN OCUR");
+  //Serial.println(char(cur1Volt) + "OCUR1");
+  //Serial.println(char(cur2Volt) + "OCUR2");
+  //Serial.println(char(cur3Volt) + "OCUR3");
+  Serial.println(maincurVolt);
   delay(250); 
 }
