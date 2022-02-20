@@ -2,13 +2,13 @@
 #include <Chrono.h>
 
 // (NODE ID << 5) | COMMAND
-const uint16_t DATA_PACKET1_ID = (0x07<<5) | 0x1C;
-const uint16_t DATA_PACKET2_ID = (0x07<<5) | 0x1D;
+const uint16_t DATA_PACKET1_ID = (0x00<<5) | 0x1C;
+const uint16_t DATA_PACKET2_ID = (0x00<<5) | 0x1D;
 const int READ_TIME = 100; // milliseconds
 const int SEND_TIME = 500; // milliseconds
 
-uint16_t PS12volt_raw, PS5volt_raw, PS12curr_raw, PS5curr_raw, PSBATT_raw, odrv1curr_raw, odrv2curr_raw, odrv3curr_raw, main_curr_raw, temp12_raw, temp5_raw;
-uint8_t PS12volt, PS5volt, PS12curr, PS5curr, PSBATT, odrv1curr, odrv2curr, odrv3curr, main_curr, temp12, temp5;
+uint16_t PS12volt_raw, PS5volt_raw, PS12curr_raw, PS5curr_raw, PSBATT_raw, PSBATT, odrv1curr_raw, odrv2curr_raw, odrv3curr_raw, main_curr_raw, temp12_raw, temp5_raw;
+uint8_t PS12volt, PS5volt, PS12curr, PS5curr, odrv1curr, odrv2curr, odrv3curr, main_curr, temp12, temp5;
 Chrono read_millis(Chrono::Resolution::MILLIS), send_millis(Chrono::Resolution::MILLIS);
 uint8_t buf1[8] = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
 uint8_t buf2[8] = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
@@ -79,9 +79,9 @@ void loop(){
     PS5curr_raw = analogRead(14);
     PS5curr = (uint8_t)(PS5curr_raw*(3.3/1023)*(5/.55)*10); // raw * analog scaling * current scaling * 10
     
-    //temp12_raw = analogRead();
+    temp12_raw = analogRead(19);
     temp12 = (uint8_t)(10*(.5-temp12_raw*(3.3/1023))/0.01);
-    //temp5_raw = analogRead();
+    temp5_raw = analogRead(16);
     temp5 = (uint8_t)(10*(.5-temp5_raw*(3.3/1023))/0.01);;
     
     odrv1curr_raw = analogRead(24);
@@ -91,7 +91,7 @@ void loop(){
     odrv3curr_raw = analogRead(26);
     odrv3curr = (uint8_t)(odrv3curr_raw*(5/122)*10);
 
-    main_curr_raw = analogRead(A13);
+    main_curr_raw = analogRead(27);
     main_curr = (uint8_t)(main_curr_raw*(5/122)*10);
     
     Serial.println("Sensor Values Taken");
