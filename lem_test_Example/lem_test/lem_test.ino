@@ -14,12 +14,12 @@ void loop() {
   float cur1Volt = cur1input * (5.0 / 122);   // conversion rate found for use with 15k ohm resistor
   float cur2Volt = cur2input * (5.0 / 122);
   float cur3Volt = cur3input * (5.0 / 122);
-  float maincurVolt = maincurinput * (5.0 / 122);
+  float maincurVolt = maincurinput * (.2);
   
   // print out the value you read:
   //Serial.println(char(cur1Volt) + "OCUR1");
   //Serial.println(char(cur2Volt) + "OCUR2");
   //Serial.println(char(cur3Volt) + "OCUR3");
   Serial.println(maincurVolt);
-  delay(250); 
+  delay(250);
 }
