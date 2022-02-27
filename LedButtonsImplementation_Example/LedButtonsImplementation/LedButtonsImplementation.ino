@@ -25,6 +25,30 @@ void setup() {
   digitalWrite(LEDYELout, LOW);
   digitalWrite(LEDGRNout, LOW);
 
+  for(int i=0;i<2;i++){
+    digitalWrite(LEDREDout, HIGH);
+    delay(300);
+    digitalWrite(LEDYELout, HIGH);
+    delay(300);
+    digitalWrite(LEDGRNout, HIGH);
+    delay(500);
+
+    digitalWrite(LEDREDout, LOW);
+    digitalWrite(LEDYELout, LOW);
+    digitalWrite(LEDGRNout, LOW);
+    delay(300);
+  }
+
+  for(int j=0;j<3;j++){
+    digitalWrite(LEDREDout, HIGH);
+    digitalWrite(LEDYELout, HIGH);
+    digitalWrite(LEDGRNout, HIGH);
+    delay(200);
+    digitalWrite(LEDREDout, LOW);
+    digitalWrite(LEDYELout, LOW);
+    digitalWrite(LEDGRNout, LOW);
+    delay(200);
+  }
 
 }
 
